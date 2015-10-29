@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Scorecard</string>
+    <string name="btn_new">New course</string>
+    <string name="title_activity_new_course">NewCourseActivity</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="course_name">Course name</string>
+    <string name="holes">Holes</string>
+    <string name="proceed">Proceed</string>
+</resources>
