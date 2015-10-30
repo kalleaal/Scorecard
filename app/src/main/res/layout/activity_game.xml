@@ -30,7 +30,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+
     <fragment
+        android:tag="frag_0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:name="com.aalto.scorecard.FragmentGame"
@@ -40,6 +42,17 @@
         android:layout_alignParentStart="true"
         tools:layout="@layout/hole_fragment"
         class="com.aalto.scorecard.FragmentGame"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/done"
+        android:id="@+id/done"
+        android:layout_below="@+id/holes"
+        android:layout_alignRight="@+id/holes"
+        android:layout_alignEnd="@+id/holes"
+        android:layout_marginTop="24dp"
+        android:onClick="onGameDone"/>
 
 
 </RelativeLayout>

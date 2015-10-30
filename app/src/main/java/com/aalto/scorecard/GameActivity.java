@@ -12,20 +12,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.view.View;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import static com.aalto.scorecard.JsonUtil.toJson;
+
 public class GameActivity extends FragmentActivity {
+
+    String courseName;
+    int numHoles = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        int numHoles = 0;
-
         Intent intent = getIntent();
-        String courseName = intent.getStringExtra(NewCourseActivity.EXTRA_COURSENAME);
+        courseName = intent.getStringExtra(NewCourseActivity.EXTRA_COURSENAME);
         String StrHoles = intent.getStringExtra(NewCourseActivity.EXTRA_HOLES);
         try {
             numHoles = Integer.parseInt(StrHoles);
@@ -43,11 +49,44 @@ public class GameActivity extends FragmentActivity {
 
         for (int i = 1; i < numHoles; i++){
             Log.i("fragment: ", "i: " + i );
-            ft.add(R.id.holes, new FragmentGame(), "i_" + i);
+            ft.add(R.id.holes, new FragmentGame(), "frag_" + i);
         }
         ft.commit();
 
 
+    }
+    public void onGameDone(View view) {
+/*        JSONObject object = new JSONObject();
+
+        try{
+            object.put("Course", courseName);
+            object.put("numOfHoles", numHoles);
+
+            for (int i = 1; i <= numHoles; i++) {
+                FragmentGame frag = (FragmentGame) getSupportFragmentManager().findFragmentByTag("frag_" + i);
+                // object.put("hole", i );
+             //   object.put("throws", frag.getThrowNum() );
+             //   object.put("par", frag.getPar());
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        System.out.println(object);*/
+
+        Game gameObject = new Game();
+        gameObject.setCourse(courseName);
+        gameObject.setNumOfHoles(numHoles);
+
+        for (int i = 0; i< numHoles; i++) {
+            FragmentGame frag = (FragmentGame) getSupportFragmentManager().findFragmentByTag("frag_" + i);
+           // System.out.println("--LOG-- par: " + frag.getPar() );
+           // System.out.println("--LOG-- throwNum: " + frag.getThrowNum() );
+            gameObject.addParList(frag.getPar());
+            gameObject.addThrowList(frag.getThrowNum());
+        }
+        toJson(gameObject);
 
     }
 }

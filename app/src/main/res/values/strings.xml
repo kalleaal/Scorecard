@@ -5,5 +5,8 @@
     <string name="title_activity_game">GameActivity</string>
     <string name="course_name">Course name</string>
     <string name="holes">Holes</string>
+    <string name="numOfThrows">Throws</string>
+    <string name="par">Par</string>
     <string name="proceed">Proceed</string>
+    <string name="done">Done</string>
 </resources>
