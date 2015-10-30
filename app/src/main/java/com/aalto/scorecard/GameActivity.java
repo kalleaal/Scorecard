@@ -3,6 +3,7 @@ package com.aalto.scorecard;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,24 +58,6 @@ public class GameActivity extends FragmentActivity {
 
     }
     public void onGameDone(View view) {
-/*        JSONObject object = new JSONObject();
-
-        try{
-            object.put("Course", courseName);
-            object.put("numOfHoles", numHoles);
-
-            for (int i = 1; i <= numHoles; i++) {
-                FragmentGame frag = (FragmentGame) getSupportFragmentManager().findFragmentByTag("frag_" + i);
-                // object.put("hole", i );
-             //   object.put("throws", frag.getThrowNum() );
-             //   object.put("par", frag.getPar());
-
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        System.out.println(object);*/
 
         Game gameObject = new Game();
         gameObject.setCourse(courseName);
@@ -86,7 +70,19 @@ public class GameActivity extends FragmentActivity {
             gameObject.addParList(frag.getPar());
             gameObject.addThrowList(frag.getThrowNum());
         }
-        toJson(gameObject);
 
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        CharSequence toastText = "";
+
+        if (toJson(gameObject)) {
+           toastText = "JSON succsessful";
+
+        }
+        else {
+           toastText = "JSON NOT successful";
+        }
+        Toast toast = Toast.makeText(context, toastText, duration);
+        toast.show();
     }
 }

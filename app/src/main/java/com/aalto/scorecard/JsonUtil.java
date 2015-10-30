@@ -8,7 +8,7 @@ import java.util.List;
 
 public class JsonUtil {
 
-    public static String toJson(Game game) {
+    public static boolean toJson(Game game) {
         try {
             JSONObject jsonObj = new JSONObject();
 
@@ -30,10 +30,11 @@ public class JsonUtil {
 
             System.out.println(jsonObj);
 
+            return true;
         } catch (JSONException e) {
             e.printStackTrace();
+            return false;
         }
 
-        return null;
     }
 }
