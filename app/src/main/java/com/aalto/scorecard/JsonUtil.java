@@ -49,7 +49,7 @@ public class JsonUtil {
 
             jsonObj.put("holes", jsonArr);
 
-            
+
 
             try {
 
@@ -139,8 +139,7 @@ public class JsonUtil {
         }
 
         res += "\n\nCourse par : " + cPar + "\n" + "Player Strikes: " + pStrikes;
-
-        System.out.print(res);
+        
 
         return res;
     }
