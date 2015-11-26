@@ -76,11 +76,11 @@ public class GameActivity extends FragmentActivity {
         CharSequence toastText = "";
 
         if (toJson(gameObject, context)) {
-           toastText = "JSON succsessful";
+           toastText = "JSONobject saved";
 
         }
         else {
-           toastText = "JSON NOT successful";
+           toastText = "JSON NOT SAVED";
         }
         Toast toast = Toast.makeText(context, toastText, duration);
         toast.show();

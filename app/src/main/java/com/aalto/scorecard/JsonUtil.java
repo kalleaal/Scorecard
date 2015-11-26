@@ -41,7 +41,7 @@ public class JsonUtil {
         Date date = new Date();
 
 
-        String fileName =  "SC_" + game.getCourse() + "_" + dateFormat.format(date) +".json";
+        String fileName =  game.getCourse() + "_" + dateFormat.format(date) +".json";
 
         try {
             JSONObject jsonObj = new JSONObject();
@@ -124,22 +124,34 @@ public class JsonUtil {
     {
         String res = "";
 
+        int cPar =  0;
+        int pStrikes = 0;
+
         try {
             JSONObject mainObject = new JSONObject(jString);
-            JSONObject holeObject = mainObject.getJSONObject("holes");
+            JSONArray holeArr = mainObject.getJSONArray("holes");
 
-            res += holeObject.getString("course") + "\n";
+            res += mainObject.getString("Course") + "\n" + "\n";
 
-            for(int i = 0 ; i < holeObject.length(); i++ )
+
+            for(int i = 0 ; i < holeArr.length(); i++ )
             {
-                res += "hole " + holeObject.getString("holeNum") + "\n" +
-                        "Par: " + holeObject.getString("par")  + "\n" +
-                        "Throws: " + holeObject.getString("numOfThrows");
+                JSONObject curr = holeArr.getJSONObject(i);
+
+                res += "Hole: " + curr.getString("holeNum") + "\n" +
+                        "Par: " + curr.getString("Par")  + "\n" +
+                        "Throws: " + curr.getString("numOfThrows") + "\n" +
+                "___________________________" + "\n";
+
+                cPar += Integer.parseInt(curr.getString("Par"));
+                pStrikes += Integer.parseInt(curr.getString("numOfThrows"));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        res += "\n\nCourse par : " + cPar + "\n" + "Player Strikes: " + pStrikes;
 
         System.out.print(res);
 
