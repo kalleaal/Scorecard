@@ -75,7 +75,7 @@ public class GameActivity extends FragmentActivity {
         int duration = Toast.LENGTH_SHORT;
         CharSequence toastText = "";
 
-        if (toJson(gameObject)) {
+        if (toJson(gameObject, context)) {
            toastText = "JSON succsessful";
 
         }

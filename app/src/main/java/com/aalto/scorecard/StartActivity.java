@@ -17,4 +17,11 @@ public class StartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewCourseActivity.class);
         startActivity(intent);
     }
+
+    public void loadRes(View view)
+    {
+        Intent intent = new Intent(this, LoadResActivity.class);
+        startActivity(intent);
+    }
+
 }

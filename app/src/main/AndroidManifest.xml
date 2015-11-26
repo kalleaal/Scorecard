@@ -24,13 +24,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.aalto.scorecard.StartActivity" />
         </activity>
-        <activity android:name=".GameActivity"
+        <activity
+            android:name=".GameActivity"
             android:label="@string/title_activity_game"
             android:parentActivityName=".NewCourseActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.aalto.scorecard.NewCourseActivity" />
+        </activity>
+        <activity android:name=".LoadResActivity" >
+        </activity>
+        <activity android:name=".ShowJsonActivity" >
         </activity>
     </application>
 
